@@ -7,9 +7,11 @@ import static com.imdhmd.p2p.Main.*;
 
 public class RequestHandler extends Thread {
     private Socket socket;
+    private Shared shared;
 
-    public RequestHandler(Socket socket) throws IOException {
+    public RequestHandler(Socket socket, Shared shared) throws IOException {
         this.socket = socket;
+        this.shared = shared;
     }
 
     public void run() {
@@ -21,7 +23,8 @@ public class RequestHandler extends Thread {
 
                 reply("Thanks for: " + request);
 
-                stay = !"bye".equals(request.trim().toLowerCase());
+                stay = !("bye".equals(request.toLowerCase()) || "quit".equals(request.toLowerCase()));
+                shared.checkQuit(request);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -43,6 +46,6 @@ public class RequestHandler extends Thread {
     }
 
     private String nextRequest() throws IOException {
-        return readAsString(socket.getInputStream());
+        return readAsString(socket.getInputStream()).trim().toLowerCase();
     }
 }

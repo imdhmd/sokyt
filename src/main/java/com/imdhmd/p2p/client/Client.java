@@ -25,7 +25,7 @@ public class Client extends Thread {
             while (stay) {
                 String input = nextInput();
                 communicate(input);
-                stay = !"bye".equals(input.toLowerCase());
+                stay = !("bye".equals(input.toLowerCase()) || "quit".equals(input.toLowerCase()));
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
