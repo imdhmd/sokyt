@@ -1,11 +1,11 @@
-package com.imdhmd.p2p.client;
+package com.imdhmd.sokyt.client;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
-import static com.imdhmd.p2p.Main.*;
+import static com.imdhmd.sokyt.Main.*;
 
 public class Client extends Thread {
 

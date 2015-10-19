@@ -1,10 +1,10 @@
-package com.imdhmd.p2p.server;
+package com.imdhmd.sokyt.server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import static com.imdhmd.p2p.Main.log;
+import static com.imdhmd.sokyt.Main.log;
 
 public class Server extends Thread {
     private ServerSocket socket;

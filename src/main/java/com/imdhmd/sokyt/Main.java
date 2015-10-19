@@ -1,7 +1,7 @@
-package com.imdhmd.p2p;
+package com.imdhmd.sokyt;
 
-import com.imdhmd.p2p.client.Client;
-import com.imdhmd.p2p.server.Server;
+import com.imdhmd.sokyt.client.Client;
+import com.imdhmd.sokyt.server.Server;
 
 import java.io.*;
 

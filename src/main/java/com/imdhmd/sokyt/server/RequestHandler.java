@@ -1,9 +1,9 @@
-package com.imdhmd.p2p.server;
+package com.imdhmd.sokyt.server;
 
 import java.io.IOException;
 import java.net.Socket;
 
-import static com.imdhmd.p2p.Main.*;
+import static com.imdhmd.sokyt.Main.*;
 
 public class RequestHandler extends Thread {
     private Socket socket;

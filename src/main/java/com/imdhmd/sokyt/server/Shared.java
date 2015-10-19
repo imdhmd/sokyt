@@ -1,4 +1,4 @@
-package com.imdhmd.p2p.server;
+package com.imdhmd.sokyt.server;
 
 import java.io.IOException;
 import java.net.Socket;
