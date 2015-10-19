@@ -24,7 +24,7 @@ public class Server extends Thread {
                 if (shared.quit())
                     break;
 
-                log("S New request received");
+                log("S New connection");
                 new RequestHandler(requestSocket, shared).start();
             }
         } catch (IOException e) {

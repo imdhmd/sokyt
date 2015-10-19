@@ -7,11 +7,10 @@ public class Shared {
     private boolean quit = false;
 
     public synchronized void checkQuit(String request) {
-        if (quit)
+        if (quit())
             return;
 
-        quit = "quit".equals(request);
-        if (quit) {
+        if ((quit = "quit".equals(request))) {
             try {
                 new Socket("localhost", 8812);
             } catch (IOException e) {

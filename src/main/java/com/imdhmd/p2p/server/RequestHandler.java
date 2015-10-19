@@ -21,7 +21,7 @@ public class RequestHandler extends Thread {
                 String request = nextRequest();
                 log("S New request: " + request);
 
-                reply("Thanks for: " + request);
+                reply("Thanks for '" + request + "'");
 
                 stay = !("bye".equals(request.toLowerCase()) || "quit".equals(request.toLowerCase()));
                 shared.checkQuit(request);

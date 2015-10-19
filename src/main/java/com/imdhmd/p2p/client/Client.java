@@ -30,8 +30,8 @@ public class Client extends Thread {
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
-            log("C Client done");
             close();
+            log("C Client done");
         }
     }
 
