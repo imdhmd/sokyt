@@ -19,7 +19,9 @@ public class Server extends Thread {
         try {
             while (true) {
                 Socket requestSocket = accept();
-                new RequestHandler(requestSocket).start();
+                log("S New request received");
+                RequestHandler requestHandler = new RequestHandler(requestSocket);
+                requestHandler.start();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
