@@ -4,13 +4,22 @@ import com.imdhmd.sokyt.client.Client;
 import com.imdhmd.sokyt.server.Server;
 
 import java.io.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
+
+import static java.lang.Thread.sleep;
+import static java.util.concurrent.Executors.newFixedThreadPool;
+import static java.util.concurrent.Executors.newSingleThreadExecutor;
 
 public class Main {
     private static final char EOF = '\0';
 
     public static void main(String... args) throws IOException {
-        new Server().start();
-        new Client().start();
+        ExecutorService executorService = newFixedThreadPool(13);
+        executorService.execute(new Server(executorService));
+        executorService.execute(new Client());
+        executorService.execute(new Client());
     }
 
     public static void log(String msg) {

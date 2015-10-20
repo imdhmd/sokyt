@@ -3,16 +3,19 @@ package com.imdhmd.sokyt.server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
 
 import static com.imdhmd.sokyt.Main.log;
 
-public class Server extends Thread {
+public class Server implements Runnable {
+    private final ExecutorService executorService;
     private ServerSocket socket;
     private Shared shared;
 
-    public Server() throws IOException {
+    public Server(ExecutorService executorService) throws IOException {
         socket = new ServerSocket(8812);
         shared = new Shared();
+        this.executorService = executorService;
     }
 
     public void run() {
@@ -25,7 +28,8 @@ public class Server extends Thread {
                     break;
 
                 log("S New connection");
-                new RequestHandler(requestSocket, shared).start();
+                executorService.execute(
+                        new RequestHandler(requestSocket, shared));
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -38,6 +42,7 @@ public class Server extends Thread {
     private void close() {
         try {
             socket.close();
+            executorService.shutdown();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

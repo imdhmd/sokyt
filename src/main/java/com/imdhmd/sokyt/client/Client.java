@@ -7,7 +7,7 @@ import java.net.Socket;
 
 import static com.imdhmd.sokyt.Main.*;
 
-public class Client extends Thread {
+public class Client implements Runnable {
 
     private final Socket socket;
     private final BufferedReader consoleIn;

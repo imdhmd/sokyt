@@ -5,7 +5,7 @@ import java.net.Socket;
 
 import static com.imdhmd.sokyt.Main.*;
 
-public class RequestHandler extends Thread {
+public class RequestHandler implements Runnable {
     private Socket socket;
     private Shared shared;
 
@@ -30,6 +30,7 @@ public class RequestHandler extends Thread {
             throw new RuntimeException(e);
         } finally {
             close();
+            log("S Handler done");
         }
     }
 
